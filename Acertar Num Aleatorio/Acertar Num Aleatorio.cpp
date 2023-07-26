@@ -2,38 +2,28 @@
 //
 
 #include <iostream>
-#include <random>
+#include "Partida.h"
 
-int main()
-{
-    int numeroPensado = numeroAleatorio();
-    int numeroJugador;
-    int vidas = 3;
+using namespace std;
 
-    std::cout << "Tengo un numero, aciertalo! Tienes 3 vidas" << std::endl;
 
+int main() {
+    string respuesta;
     do {
-        std::cout << "Escribe un numero:" << std::endl;
-        std::cin >> numeroJugador;
+        Partida p;
+        p.acertar();
+        cout << "Quieres jugar otra vez? (si/no)" << endl;
+        cin >> respuesta;
+    } while (respuesta == "si");
 
-        if (numeroJugador == numeroPensado) {
-            std::cout << "Es el correcto" << std::endl;
-        } else {
-            std::cout << "Fallaste" << std::endl;
-        }
-    } while (--vidas > 0 && numeroJugador != numeroPensado);
-    
-    if (vidas == 0) {
-        std::cout << "EL número pensado es: " << numeroPensado << std::endl;
-    }
+    cout << "Adios" << endl;
+
+    return 0;
 }
 
-int numeroAleatorio() {
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(1.0, 10.0);
-    return dist(mt);
-}
+
+
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
